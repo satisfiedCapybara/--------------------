@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/pattern_search.h
+vector
+-
+any
+-
+functional
+-
+
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/src/main.cpp
+any
+-
+iostream
+-
+pattern_search.h
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/src/pattern_search.h
+

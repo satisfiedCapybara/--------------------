@@ -1,0 +1,14 @@
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/CMakeFiles/install/strip.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/CMakeFiles/install/local.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/CMakeFiles/install.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/CMakeFiles/list_install_components.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/CMakeFiles/rebuild_cache.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/CMakeFiles/edit_cache.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/install/local.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/install.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/list_install_components.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/rebuild_cache.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/edit_cache.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/install/strip.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/pattern_search.main.dir
+/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src/CMakeFiles/pattern_search.dir

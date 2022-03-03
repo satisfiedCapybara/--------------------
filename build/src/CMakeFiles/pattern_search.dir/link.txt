@@ -1,0 +1,1 @@
+/bin/clang++-10 -fPIC -g  -shared -Wl,-soname,libpattern_search.so -o libpattern_search.so CMakeFiles/pattern_search.dir/pattern_search.cpp.o  -lpthread 

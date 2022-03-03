@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src",
+  "command": "/bin/clang++-10   -I\"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src\" -I\"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/include\"  -g   -std=gnu++17 -o CMakeFiles/pattern_search.main.dir/main.cpp.o -c \"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/src/main.cpp\"",
+  "file": "/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/src/main.cpp"
+},
+{
+  "directory": "/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src",
+  "command": "/bin/clang++-10  -Dpattern_search_EXPORTS -I\"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src\" -I\"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/include\"  -g -fPIC   -std=gnu++17 -o CMakeFiles/pattern_search.dir/pattern_search.cpp.o -c \"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/src/pattern_search.cpp\"",
+  "file": "/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/src/pattern_search.cpp"
+}
+]
