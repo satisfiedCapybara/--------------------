@@ -1,1 +1,0 @@
-/bin/clang++-10  -g   CMakeFiles/pattern_search.info.dir/main.cpp.o  -o pattern_search.info  -Wl,-rpath,"/home/semen/Методы оптимизации/Алгоритм Хука-Дживса/build/src:" libpattern_search.so -lpthread 

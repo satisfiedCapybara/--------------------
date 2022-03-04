@@ -1,6 +1,6 @@
 set(header_path "${${PROJECT_NAME}_SOURCE_DIR}/include")
-set(header ${header_path}/pattern_search.h)
-set(src pattern_search.cpp)
+set(header ${header_path}/pattern_search.h ${header_path}/downhill_simplex_method.h)
+set(src pattern_search.cpp downhill_simplex_method.cpp)
 
 add_library(${PROJECT_NAME} SHARED
   ${header}
