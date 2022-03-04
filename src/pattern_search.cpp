@@ -1,7 +1,10 @@
+//My includes
 #include "pattern_search.h"
 
-std::any pattern_search(const std::function<double(const dvector&)>& Q, const double eps, const double h,
-                        const dvector& X_0, const dvector& delta)
+#define EPS_DELTA 0.001
+
+std::any pattern_search(const std::function<double(const dvector&)>& Q, const double eps = 0.01, const double h = 1,
+                        const dvector& X_0 = {0, 0}, const dvector& delta = {2, 1})
 {
     dvector cur_delta = delta;
     dvector T_2, T_1, T_1p, T_1m, T_2p, T_2m;
@@ -60,8 +63,8 @@ std::any pattern_search(const std::function<double(const dvector&)>& Q, const do
 
         if (!flag)
         {
-            cur_delta[0] = (cur_delta[0] > 0.001) ? cur_delta[0] - 0.001 : cur_delta[0];
-            cur_delta[1] = (cur_delta[1] > 0.001) ? cur_delta[1] - 0.001 : cur_delta[1];
+            cur_delta[0] = (cur_delta[0] > EPS_DELTA) ? cur_delta[0] - EPS_DELTA : cur_delta[0];
+            cur_delta[1] = (cur_delta[1] > EPS_DELTA) ? cur_delta[1] - EPS_DELTA : cur_delta[1];
         }
         flag = false;
     }
