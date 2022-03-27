@@ -26,10 +26,9 @@ int main() {
     double stretching = 2;
     double compression = 0.9;
 
-    dvector sln_vector_dsm = downhill_simplex_method(Q, initial_vector, eps, reflection, stretching, compression).front();
-
     try
     {
+        dvector sln_vector_dsm = downhill_simplex_method(Q, initial_vector, eps, reflection, stretching, compression).front();        
         dvector sln_ps = std::any_cast<dvector>(pattern_search(Q, 2, X, delta, 0.00001, h));
 
         std::cout << "Pattern search:" << std::endl;

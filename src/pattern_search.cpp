@@ -1,12 +1,14 @@
 //My includes
 #include "pattern_search.h"
-#include <iostream>
+#include <iostream>//remove unnecessary library
 
 #define EPS_DELTA 0.00001
 
+//too many arguments for the function
 std::any pattern_search(const std::function<double(const dvector&)>& Q, int dimension, const dvector& X_0, const dvector& delta,
                         const double eps = 0.01, const double h = 1)
 {
+    //Bad variable names
     dvector cur_delta = delta;
     dvector T_p, T_m;
     dvector T = X_0;
@@ -51,6 +53,7 @@ std::any pattern_search(const std::function<double(const dvector&)>& Q, int dime
             }
         }
     }
+    //the expression is too long and inconvenient to read   
     while (*std::max_element(std::begin(cur_delta), std::end(cur_delta)) > eps);
 
     return T;

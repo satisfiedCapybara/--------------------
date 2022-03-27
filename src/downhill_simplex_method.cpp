@@ -1,5 +1,7 @@
 #include "downhill_simplex_method.h"
 
+//The function takes too many arguments
+//Make the return value as std::any
 std::vector<dvector> downhill_simplex_method(const std::function<double(const dvector&)>& Q, 
                                             std::vector<dvector> initial_vector_X, const double eps = 0.01,
                                             double reflection = 1, double stretching = 2, double compression = 0.5)
