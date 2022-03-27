@@ -1,10 +1,8 @@
 #include "downhill_simplex_method.h"
 
-//The function takes too many arguments
-//Make the return value as std::any
-std::vector<dvector> downhill_simplex_method(const std::function<double(const dvector&)>& Q, 
-                                            std::vector<dvector> initial_vector_X, const double eps = 0.01,
-                                            double reflection = 1, double stretching = 2, double compression = 0.5)
+std::any downhill_simplex_method(const std::function<double(const dvector&)>& Q, 
+                                std::vector<dvector> initial_vector_X, const double eps = 0.01,
+                                const double reflection = 1, const double stretching = 2, const double compression = 0.5)
 {
     std::vector<dvector> cur_vector_X = initial_vector_X;
     int vector_size = cur_vector_X.size();
@@ -12,7 +10,11 @@ std::vector<dvector> downhill_simplex_method(const std::function<double(const dv
 
     while (true)
     {
-        std::sort(begin(cur_vector_X), end(cur_vector_X), [&Q] (const dvector& first, const dvector& second) { return Q(first) < Q(second); });
+        std::sort(begin(cur_vector_X), end(cur_vector_X),
+        [&Q] (const dvector& first, const dvector& second) 
+        { 
+            return Q(first) < Q(second); 
+        });
 
         dvector gravity_center(size, 0);
         for(size_t i = 0; i < size; ++i)

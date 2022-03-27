@@ -1,60 +1,57 @@
 //My includes
 #include "pattern_search.h"
-#include <iostream>//remove unnecessary library
 
-#define EPS_DELTA 0.00001
+#define DELTA_STEP 0.00001
 
-//too many arguments for the function
-std::any pattern_search(const std::function<double(const dvector&)>& Q, int dimension, const dvector& X_0, const dvector& delta,
-                        const double eps = 0.01, const double h = 1)
+std::any pattern_search(const std::function<double(const dvector&)>& Q, int dimension, const dvector& initial_X,
+                        const dvector& delta, const double eps = 0.001, const double h = 1)
 {
-    //Bad variable names
-    dvector cur_delta = delta;
-    dvector T_p, T_m;
-    dvector T = X_0;
-    dvector X_1 = T;
-    bool flag;
+    dvector current_delta = delta, current_Xp, current_Xm;
+    dvector current_X = initial_X, candidate_X = current_X;
+    dvector previous_X;
+
+    double max_delta;
 
     do 
     {
-        dvector previous_X = T;
-        T_p = T;
-        T_m = T;
+        previous_X = current_X;
+        current_Xp = current_X;
+        current_Xm = current_X;
 
         for (int i = 0; i < dimension; ++i)
         {
-            T_m[i] = T[i] - cur_delta[i];
-            T_p[i] = T[i] + cur_delta[i];
+            current_Xm[i] = current_X[i] - current_delta[i];
+            current_Xp[i] = current_X[i] + current_delta[i];
 
-            if (Q(T_m) < Q(T))
+            if (Q(current_Xm) < Q(current_X))
             {
-                T = T_m;
-            } else if (Q(T_p) < Q(T))
+                current_X = current_Xm;
+            } else if (Q(current_Xp) < Q(current_X))
             {
-                T = T_p;
+                current_X = current_Xp;
             }
         }
 
         for (int i = 0; i < dimension; ++i)
         {
-            X_1[i] = X_1[i] + h *(T[i] - X_1[i]);
+            candidate_X[i] = candidate_X[i] + h *(current_X[i] - candidate_X[i]);
         }
         
-        if (Q(X_1) < Q(T))
+        if (Q(candidate_X) < Q(current_X))
         {
-            T = X_1;
+            current_X = candidate_X;
         }
 
-        if (previous_X == T)
+        if (previous_X == current_X)
         {
             for (int i = 0; i < dimension; ++i)
             {
-                cur_delta[i] = (cur_delta[i] > EPS_DELTA) ? cur_delta[i] - EPS_DELTA : cur_delta[i];
+                current_delta[i] = (current_delta[i] > DELTA_STEP) ? current_delta[i] - DELTA_STEP : current_delta[i];
             }
         }
+        max_delta = *std::max_element(std::begin(current_delta), std::end(current_delta));
     }
-    //the expression is too long and inconvenient to read   
-    while (*std::max_element(std::begin(cur_delta), std::end(cur_delta)) > eps);
+    while (max_delta > eps);
 
-    return T;
+    return current_X;
 }
