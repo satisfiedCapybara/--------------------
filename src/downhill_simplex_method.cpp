@@ -1,7 +1,7 @@
 #include "downhill_simplex_method.h"
 
 std::any downhill_simplex_method(const std::function<double(const dvector&)>& Q, 
-                                std::vector<dvector> initial_vector_X, const double eps = 0.01,
+                                std::vector<dvector> initial_vector_X, const double eps = 0.001,
                                 const double reflection = 1, const double stretching = 2, const double compression = 0.5)
 {
     std::vector<dvector> cur_vector_X = initial_vector_X;
