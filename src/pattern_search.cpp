@@ -1,74 +1,57 @@
 //My includes
 #include "pattern_search.h"
+#include <iostream>
 
-#define EPS_DELTA 0.001
+#define EPS_DELTA 0.00001
 
-std::any pattern_search(const std::function<double(const dvector&)>& Q, const double eps = 0.01, const double h = 1,
-                        const dvector& X_0 = {0, 0}, const dvector& delta = {2, 1})
+std::any pattern_search(const std::function<double(const dvector&)>& Q, int dimension, const dvector& X_0, const dvector& delta,
+                        const double eps = 0.01, const double h = 1)
 {
     dvector cur_delta = delta;
-    dvector T_2, T_1, T_1p, T_1m, T_2p, T_2m;
+    dvector T_p, T_m;
     dvector T = X_0;
-    dvector X_1, X_2;
+    dvector X_1 = T;
     bool flag;
 
     do 
     {
-        X_1 = T_1 = T_2 = {0, 0};
-        T_1p = { T[0] + delta[0], T[1] };
-        T_1m = { T[0] - delta[0], T[1] };
+        dvector previous_X = T;
+        T_p = T;
+        T_m = T;
 
-        if (Q(T_1m) < Q(T))
+        for (int i = 0; i < dimension; ++i)
         {
-            T_1 = T_1m;
-            flag = true;
-        } 
-        else if (Q(T_1p) < Q(T))
-        {
-            T_1 = T_1p;
-            flag = true;
-        }  else
-        {
-            T_1 = T;
+            T_m[i] = T[i] - cur_delta[i];
+            T_p[i] = T[i] + cur_delta[i];
+
+            if (Q(T_m) < Q(T))
+            {
+                T = T_m;
+            } else if (Q(T_p) < Q(T))
+            {
+                T = T_p;
+            }
         }
 
-        T_2p = { T_1[0], T_1[1] + delta[1] };
-        T_2m = { T_1[0], T_1[1] - delta[1] };
-
-        if (Q(T_2p) < Q(T_1))
+        for (int i = 0; i < dimension; ++i)
         {
-            T_2 = T_2p;
-            flag = true;
-        } 
-        else if (Q(T_2m) < Q(T_1))
-        {
-            T_2 = T_2m;
-            flag = true;
-        } else
-        {
-            T_2 = T_1;
+            X_1[i] = X_1[i] + h *(T[i] - X_1[i]);
         }
-
-        X_1[0] = T[0] + h * (T_2[0] - T[0]);
-        X_1[1] = T[1] + h * (T_2[1] - T[1]);
         
         if (Q(X_1) < Q(T))
         {
             T = X_1;
         }
-        else
-        {
-            T = T_2;
-        }
 
-        if (!flag)
+        if (previous_X == T)
         {
-            cur_delta[0] = (cur_delta[0] > EPS_DELTA) ? cur_delta[0] - EPS_DELTA : cur_delta[0];
-            cur_delta[1] = (cur_delta[1] > EPS_DELTA) ? cur_delta[1] - EPS_DELTA : cur_delta[1];
+            for (int i = 0; i < dimension; ++i)
+            {
+                cur_delta[i] = (cur_delta[i] > EPS_DELTA) ? cur_delta[i] - EPS_DELTA : cur_delta[i];
+            }
         }
-        flag = false;
     }
-    while (cur_delta[0] > eps || cur_delta[1] > eps);
+    while (*std::max_element(std::begin(cur_delta), std::end(cur_delta)) > eps);
 
     return T;
 }

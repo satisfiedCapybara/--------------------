@@ -10,7 +10,7 @@
 int main() {
     //Initial parameters for pattern_search
     dvector X = {-1.0, 2.0 };
-    dvector delta = {2, 1};
+    dvector delta = {1, 1};
     double eps = 0.01;
     double h = 1;
 
@@ -30,7 +30,7 @@ int main() {
 
     try
     {
-        dvector sln_ps = std::any_cast<dvector>(pattern_search(Q, eps, h, X, delta));
+        dvector sln_ps = std::any_cast<dvector>(pattern_search(Q, 2, X, delta, 0.00001, h));
 
         std::cout << "Pattern search:" << std::endl;
         std::cout << "X = { " << sln_ps[0] << ", " << sln_ps[1] << " }" << std::endl;
